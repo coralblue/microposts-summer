@@ -27,25 +27,26 @@ before_action :correct_user,   only: [:edit, :update]
   def update
     @user = User.find(params[:id])
       
-    if @user.update(user_params)
+  if @user.update(user_params)
       # 保存に成功した場合はトップページへリダイレクト
       redirect_to @user, notice: 'ユーザー情報をアップデートしました'
-    else
+  else
       # 保存に失敗した場合は編集画面へ戻す
       render 'edit'
     end
   end
 
-
-  private
-
+  # private
+  
 def correct_user
   @user = User.find(params[:id])
   redirect_to(root_url) unless @user == current_user
 end
 
-  def user_params
-    params.require(:user).permit(:name, :email, :password,
+
+def user_params
+  params.require(:user).permit(:name, :email, :password,
                                  :password_confirmation)
   end
 end
+
