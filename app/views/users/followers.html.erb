@@ -1,14 +1,9 @@
-<h3><%= link_to @user.name, root_path %></h3></br>
-
-<%= link_to 'Followers一覧', followers_user_path(@user) %>
-<%= '　　　　　 ' %>
-<%= link_to '✿ Following一覧へ', followings_user_path(@user) %>
-
-<%#= link_to user.name ,  user_path(user) %>
-
+<!--<h3><%#= link_to @user.name, user_path %> の <%#= link_to 'Followers一覧', followers_user_path(@user) %> </h3></br>-->
+<h3><%= link_to @user.name, user_path(@user) %> の <%= link_to 'Followers一覧', followers_user_path(@user) %> </h3>
 <% @followers.each do |user| %><br><br>
   <%= link_to gravatar_for(user, size: 50), user_path(user) %><br>
   <%= link_to user.name ,  user_path(user) %><br>
-  
-
 <% end %>
+
+<%= '　　　　　 ' %>
+<%= link_to 'Ω Following一覧へ', followings_user_path(@user) %>
