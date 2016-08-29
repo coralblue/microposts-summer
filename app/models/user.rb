@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
   validates :age ,  numericality: {only_integer: true, greater_than: 0, less_than_or_equal_to: 130}, on: :update
+
   has_secure_password
   
  has_many :microposts

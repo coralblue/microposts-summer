@@ -74,7 +74,7 @@ end
 
 def user_params
   #userハッシュの定義
-  params.require(:user).permit(:name, :email, :password, :age, :profile,
+  params.require(:user).permit(:name, :email, :password, :age,:address, :profile,
                                :password_confirmation)
 end
 

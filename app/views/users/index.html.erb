@@ -4,7 +4,7 @@
 <% @all_users.each do |user| %>
   <%= link_to user.name ,  user_path(user) %><br>
   <%= link_to gravatar_for(user, size: 40), user_path(user) %><br>
-  <%= link_to "My Likes" , likes_user_path(user)  %><br>
+  <%= link_to "Likeした投稿一覧" , likes_user_path(user)  %><br>
 <br><% end %>
 
 <% else %>

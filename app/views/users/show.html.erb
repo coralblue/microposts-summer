@@ -4,12 +4,15 @@
     <section class="user_info">
       <h1>
         <%= gravatar_for @user %>
-        <%= @user.name %>
+        <%= @user.name %></br>
+        
      </h1>
 <%= link_to 'Followings一覧', followings_user_path(@user) %></br>
 <%= link_to 'Followers一覧', followers_user_path(@user) %>
 </br></br></br>
-<span><%= @user.profile %></span>
+
+自己紹介: <span><%= @user.profile %></span>
+</br> <%= @user.age %> 年前に生まれた不束者ですが, 宜しくお願いします。</br>
     </section>
   </aside>
 
