@@ -4,6 +4,7 @@ before_action :correct_user,   only: [:edit, :update]
   def show
     @user = User.find(params[:id])
     @microposts = @user.microposts.order(created_at: :desc)
+    @all_users = User.all
   end
 
   def new
@@ -14,7 +15,7 @@ before_action :correct_user,   only: [:edit, :update]
     @user = User.new(user_params)
     if @user.save
       flash[:success] = "Welcome to the Sample App!"
-      redirect_to @user # ここを修正
+      redirect_to @user 
     else
       render 'new'
     end
@@ -26,27 +27,56 @@ before_action :correct_user,   only: [:edit, :update]
   
   def update
     @user = User.find(params[:id])
-      
   if @user.update(user_params)
-      # 保存に成功した場合はトップページへリダイレクト
       redirect_to @user, notice: 'ユーザー情報をアップデートしました'
   else
-      # 保存に失敗した場合は編集画面へ戻す
       render 'edit'
-    end
+  end
   end
 
-  # private
+def followings
+    @user  = User.find(params[:id])      
+    @followings = @user.following_users  
+end
+
+def followers 
+    @user  = User.find(params[:id])
+    @followers = @user.follower_users
+end
+
+def likes
+  @user = User.find(params[:id])
+  @feed_likes = @user.like_microposts.order(created_at: :desc)
+  render 'likes/feed_likes'
+end
+
+
+ def destroy
+    @micropost = Micropost.find(params[:micropost_id])
+    current_user.remove_like(@micropost)
+    redirect_to :back 
+ end
+
+  def index
+  @all_users = User.order("created_at")
+  end
   
+  def all_users
+    User.all
+  end
+  
+  
+  private
 def correct_user
   @user = User.find(params[:id])
   redirect_to(root_url) unless @user == current_user
 end
 
-
 def user_params
-  params.require(:user).permit(:name, :email, :password,
-                                 :password_confirmation)
-  end
+  #userハッシュの定義
+  params.require(:user).permit(:name, :email, :password, :age, :profile,
+                               :password_confirmation)
+end
+
 end
 

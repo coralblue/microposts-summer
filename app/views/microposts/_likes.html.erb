@@ -1,0 +1,18 @@
+<!--_likes.html.erb-->
+<div class="panel-body">
+    <% @micropost.each do |microposts| %>
+    <span class="label label-success"><%= microposts.id %></span>
+
+<%= render @likes%>  
+
+    <%= link_to "like", likes_path(micropost_id: micropost.id), method: :post %>
+      <br>
+    <% end %>
+  </div>
+</div>
+
+
+<%= form_for(current_user.likes.build, remote: true) do |f| %>
+  <div><%= hidden_field_tag :microposts_id, @microposts.id %></div>
+  <%= link_to "like", likes_path(micropost_id: micropost.id), method: :post %>
+<% end %>

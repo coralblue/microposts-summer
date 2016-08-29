@@ -5,6 +5,11 @@
 
 body {
   padding-top: 60px;
+  // background-color: #f0f8ff; aliceblue
+  // background-color: #e6e6fa; lavender
+  // background-color: #fffafa; snow
+  // background-color: #f8f8ff; ghostwhite
+  background-color: #e0ffff;
 }
 
 section {
@@ -50,7 +55,13 @@ p {
   line-height: 1.7em;
 }
 
+
 /* header */
+
+ .navbar {
+       background-color: #87ceeb;
+       border-color: #fffafa;
+}
 
 #logo {
   float: left;
@@ -64,7 +75,7 @@ p {
 }
 
 #logo:hover {
-  color: #fff;
+  color: #FF7F50;
   text-decoration: none;
 }
 
@@ -148,6 +159,7 @@ aside {
     padding: 10px 0;
     border-top: 1px solid #e8e8e8;
   }
+  
   .user {
     margin-top: 5em;
     padding-top: 0;
@@ -163,12 +175,13 @@ aside {
   .timestamp {
     color: $gray-light;
     display: block;
-    margin-left: 60px;
+    margin-left: 50px;
   }
   .gravatar {
     float: left;
     margin-right: 10px;
     margin-top: 5px;
+    visibility: visible;
   }
 }
 

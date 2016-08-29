@@ -1,0 +1,16 @@
+<% if logged_in? %>
+
+<!— ログインしている場合 —>
+<% @all_users.each do |user| %>
+  <%= link_to user.name ,  user_path(user) %><br>
+  <%= link_to gravatar_for(user, size: 40), user_path(user) %><br>
+  <%= link_to "My Likes" , likes_user_path(user)  %><br>
+<br><% end %>
+
+<% else %>
+  <% @all_users.each do |user| %><br>
+  <%= link_to user.name ,  user_path(user) %><br>
+  <%= link_to gravatar_for(user, size: 40), user_path(user) %><br>
+<% end %>
+
+<% end %>

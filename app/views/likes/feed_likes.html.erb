@@ -1,0 +1,6 @@
+<!--feed_likes.html-->
+<% if @feed_likes.any? %>
+  <ol class="microposts">
+    <%= render @feed_likes %>
+  </ol>
+<% end %>

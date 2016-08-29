@@ -1,7 +1,8 @@
+<!--_follow_form.jtml.erb-->
 <% if current_user != @user %>
   <div id="follow_form">
   <% if current_user.following?(@user) %>
-    <%= render 'unfollow' %>
+  <%= render 'unfollow' %>
   <% else %>
     <%= render 'follow' %>
   <% end %>

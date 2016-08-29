@@ -1,12 +1,25 @@
+<!--_micropost.html.erb-->
 <li id="micropost-<%= micropost.id %>">
   <%= link_to gravatar_for(micropost.user, size: 50), micropost.user %>
   <span class="user"><%= link_to micropost.user.name, micropost.user %></span>
   <span class="content"><%= micropost.content %></span>
   <span class="timestamp">
-    Posted <%= time_ago_in_words(micropost.created_at) %> ago.
+  Posted <%= time_ago_in_words(micropost.created_at) %> ago.
+
     <% if current_user == micropost.user %>
+
     <%= link_to "delete", micropost, method: :delete,
                                        data: { confirm: "You sure?" } %>
-    <% end %>
+  <% end %>
+
+  <% if logged_in? %> 
+   <% if current_user.like?(micropost) %>
+   <%= link_to "unlike", like_path(current_user.likes.find_by(micropost_id: micropost.id), micropost_id: micropost.id) , method: :delete , data: { confirm: "You sure?" } %>
+
+   <% else %>
+   <%= link_to "like", likes_path(micropost_id: micropost.id), method: :post %>
+   <% end %>
+  <% end %>
+
   </span>
 </li>
