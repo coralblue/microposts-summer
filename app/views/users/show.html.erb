@@ -10,8 +10,26 @@
 <%= link_to 'Followers一覧', followers_user_path(@user) %>
 </br></br></br>
 
-自己紹介: <span><%= @user.profile %></span>
-</br> 年齢:<%= @user.age %>
+
+      <% if logged_in? %>    
+   <!--ログインしていなかったら見ることができない部分を書く     -->
+       <% if current_user.age.present? %>
+         年齢: </br> 
+        <%#= @current_user.age %><!--どちらでも使える模様-->
+        <%= @user.age %>
+        <% else %>
+      <% end %>
+      </br> 
+        
+        <% if current_user.profile.present?  %>
+         </br>  
+        <span>プロフィール:</br>  <%= @user.profile %></span>
+        <% else %>
+        <% end %>
+        
+      <% else %>
+      <% end %>
+
     </section>
   </aside>
 
@@ -24,4 +42,4 @@
       </ol>
     <% end %>
   </div>
-</div>
+         <%# if @user.age.blank? %><%#= current_user.profile %><%# if @user.profile.blank? %>

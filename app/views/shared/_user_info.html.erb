@@ -4,4 +4,6 @@
 <span><%= link_to "view my profile", current_user %></span>
 <span><%= pluralize(current_user.microposts.count, "micropost") %></span>
 </br>
-<span><%= current_user.profile %></span>
+<!--<span><%#= current_user.profile %></span>-->
+<span>プロフィール: <%= current_user.profile %></span></br>
+<span>年齢: <%= current_user.age %></span>
